@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="300" viewBox="0 0 1200 300" role="img" aria-label="Darus Ishak">
+  <rect width="1200" height="300" fill="#0d1117"/>
+    <line x1="60" y1="60" x2="1140" y2="60" stroke="#2a2f36" stroke-width="1">
+    
+  </line>
+    <text x="60" y="150" font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-weight="800" font-size="76" fill="#FFFBEF" letter-spacing="-2">DARUS&#160;ISHAK</text>
+    <text x="60" y="200" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="18" fill="#9a9a9a">
+    engineer · developer · analyst
+    
+  </text>
+    <g transform="translate(1030 70) scale(1.2) translate(-3 0)">
+    <circle cx="40" cy="44" r="24" fill="#2563EB">
+      
+      
+    </circle>
+    <g transform="rotate(12 58 54)"><rect x="40" y="36" width="36" height="36" rx="7" fill="#60A5FA">
+      
+    </rect></g>
+    <g transform="rotate(-8 69 64)"><path d="M50 76 L70 42 L88 74 Z" fill="#FACC15">
+      
+    </path></g>
+  </g>
+    <line x1="60" y1="240" x2="1140" y2="240" stroke="#2a2f36" stroke-width="1">
+    
+  </line>
+  <text x="60" y="270" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#9a9a9a" letter-spacing="2">SHAH ALAM · MALAYSIA · UTC+8</text>
+  <text x="1140" y="270" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" font-size="13" fill="#9a9a9a" letter-spacing="2">DARUSISHAK.COM</text>
+</svg>
