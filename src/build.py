@@ -276,21 +276,21 @@ def header(num, title, note):
 # ------------------------------------------------------------------ Ruji Labs
 def studio_card():
     W, H = 1200, 200
-    logo = (SRC / "ruji-labs-logo-white.svg").read_text()
+    logo = (SRC / "ruji-labs-logo.svg").read_text()
     logo_b64 = "data:image/svg+xml;base64," + base64.b64encode(logo.encode()).decode()
     lh = 92
     lw = lh * 1149 / 616
     body = (
-        f'<rect width="{W}" height="{H}" rx="26" fill="{INK}"/>'
-        f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="25" fill="none" stroke="{WHITE}" stroke-opacity=".16" stroke-width="2"/>'
+        f'<rect x="1.5" y="7" width="{W - 3}" height="{H - 8.5}" rx="26" fill="{INK}"/>'
+        f'<rect x="1.5" y="1.5" width="{W - 3}" height="{H - 9}" rx="26" fill="{WHITE}" stroke="{INK}" stroke-width="2"/>'
         f'<image href="{logo_b64}" x="48" y="{(H - lh) / 2:.0f}" width="{lw:.0f}" height="{lh}"/>'
-        f'<line x1="{48 + lw + 40:.0f}" y1="48" x2="{48 + lw + 40:.0f}" y2="{H - 48}" stroke="{WHITE}" stroke-opacity=".2"/>'
+        f'<line x1="{48 + lw + 40:.0f}" y1="48" x2="{48 + lw + 40:.0f}" y2="{H - 48}" stroke="{INK}" stroke-opacity=".15"/>'
     )
     x = 48 + lw + 80
-    body += text(x, 74, "RUJI LABS", "monob", 12, SUN, extra='letter-spacing="2"')
+    body += text(x, 74, "RUJI LABS", "monob", 12, BLUE, extra='letter-spacing="2"')
     y = 112
     for line in wrap("My product studio. Software for Malaysian businesses, live in production.", "sans", 20, W - x - 56):
-        body += text(x, y, line, "sans", 20, WHITE)
+        body += text(x, y, line, "sans", 20, INK)
         y += 30
     save("studio.svg", svg(W, H, "Ruji Labs, my product studio in Shah Alam.", body, font_css("monob", "sans")))
 
@@ -298,14 +298,16 @@ def studio_card():
 def tile(slug, name, kind, year, line, domain):
     W, H = 384, 236
     p = 24
+    logo = "data:image/svg+xml;base64," + base64.b64encode((SRC / "logos" / f"{slug}.svg").read_bytes()).decode()
     body = [
         f'<rect x="1.5" y="6" width="{W - 3}" height="{H - 7.5}" rx="20" fill="{INK}"/>',
         f'<rect x="1.5" y="1.5" width="{W - 3}" height="{H - 8}" rx="20" fill="{WHITE}" stroke="{INK}" stroke-width="2"/>',
-        text(p, 44, kind.upper(), "monob", 11, BLUE, extra='letter-spacing="1.8"'),
-        text(W - p, 44, year, "mono", 12, MUTE, "end"),
-        text(p - 1, 86, name, "cas", 32, INK, extra='letter-spacing="-.6"'),
+        f'<image href="{logo}" x="{p}" y="24" width="52" height="52"/>',
+        text(p + 66, 52, name, "cas", 28, INK, extra='letter-spacing="-.6"'),
+        text(p + 67, 71, kind.upper(), "monob", 10.5, BLUE, extra='letter-spacing="1.6"'),
+        text(W - p, 40, year, "mono", 12, MUTE, "end"),
     ]
-    y = 118
+    y = 114
     for ln in wrap(line, "sans", 15, W - p * 2)[:3]:
         body.append(text(p, y, ln, "sans", 15, "#3A3640"))
         y += 22
@@ -327,8 +329,8 @@ def main():
         ("nodex", "NodeX", "Bio storefront", "2026", "One link in your bio for products, orders and bookings. Buyers pay you directly.", "nodex.my"),
         ("berkira", "Berkira", "Receipts and tax", "2026", "Snap a receipt, AI reads it, export a Tax Agent Pack at year end.", "berkira.com"),
         ("conecta", "Conecta", "Name cards", "2026", "One identity, many name cards. Printed QR codes can be re-pointed without reprinting.", "conecta.my"),
-        ("workit", "WorkIt", "Service operations", "2026", "Quotation to job to service report, for contractors and maintenance teams.", "workit.my"),
         ("semakcv", "SemakCV", "Resumes", "2026", "Upload a resume, get rewritten bullet points and an ATS score against the job ad.", "semakcv.com"),
+        ("pl300", "PL-300 Drill", "Exam prep", "2026", "120 flashcards and 187 exam-style questions for the Power BI PL-300 exam.", "powerbi.rujilabs.com"),
     ]
     for p in products:
         tile(*p)

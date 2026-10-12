@@ -15,8 +15,8 @@
 <a href="https://nodex.my"><img src="assets/p-nodex.svg" alt="NodeX: bio storefront" width="32%"></a>
 <a href="https://berkira.com"><img src="assets/p-berkira.svg" alt="Berkira: receipts and tax" width="32%"></a>
 <a href="https://conecta.my"><img src="assets/p-conecta.svg" alt="Conecta: name cards" width="32%"></a>
-<a href="https://workit.my"><img src="assets/p-workit.svg" alt="WorkIt: service operations" width="32%"></a>
 <a href="https://semakcv.com"><img src="assets/p-semakcv.svg" alt="SemakCV: resumes" width="32%"></a>
+<a href="https://powerbi.rujilabs.com"><img src="assets/p-pl300.svg" alt="PL-300 Drill: exam prep" width="32%"></a>
 
 <br>
 

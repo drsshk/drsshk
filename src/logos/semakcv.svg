@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+    <!-- Doc + seal mark (dark ink for light backgrounds) -->
+    <path d="M 24 12 h 32 l 14 14 v 52 a 6 6 0 0 1 -6 6 H 24 a 6 6 0 0 1 -6 -6 V 18 a 6 6 0 0 1 6 -6 z" stroke="#0F172A" stroke-width="7" stroke-linejoin="round" fill="none"/>
+    <path d="M 56 12 v 14 h 14" stroke="#0F172A" stroke-width="7" stroke-linejoin="round" fill="none"/>
+    <circle cx="68" cy="68" r="24" fill="#10B981"/>
+    <path d="M 57 68 L 65 76 L 80 58" stroke="#FFFFFF" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg>
