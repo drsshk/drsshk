@@ -224,18 +224,18 @@ def hero():
         + name_cas
         + f'<path class="draw" d="{path}" fill="none" stroke="{WHITE}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>'
         + hours("rgba(255,255,255,.62)")
-        + text(56, 404, "2014 TO 2022", "monob", 12, SUN, extra='letter-spacing="2"')
-        + text(56, 424, "Mills, labs and biogas plants", "sans", 15, WHITE)
+        + text(56, 404, "BEFORE", "monob", 12, SUN, extra='letter-spacing="2"')
+        + text(56, 424, "The plant floor", "sans", 15, WHITE)
     )
     right = (
         f'<rect width="{W}" height="{H}" fill="{WHITE}"/>'
         + grid("rgba(17,16,18,.08)")
-        + text(1144, 62, "SHAH ALAM · MALAYSIA · UTC+8", "monob", 13, INK, "end", 'letter-spacing="2.5"')
+        + text(1144, 62, "ENGINEER · BUILDER", "monob", 13, INK, "end", 'letter-spacing="2.5"')
         + name_mono
         + f'<path class="draw" d="{path}" fill="none" stroke="{BLUE}" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>'
         + hours(MUTE)
-        + text(1144, 404, "SINCE 2022", "monob", 12, BLUE, "end", 'letter-spacing="2"')
-        + text(1144, 424, "The software those plants run on", "sans", 15, INK, "end")
+        + text(1144, 404, "NOW", "monob", 12, BLUE, "end", 'letter-spacing="2"')
+        + text(1144, 424, "The software behind it", "sans", 15, INK, "end")
         + f'<circle class="pulse" cx="{ex:.1f}" cy="{ey:.1f}" r="6" fill="{BLUE}"/>'
         + f'<circle class="fade" cx="{ex:.1f}" cy="{ey:.1f}" r="5" fill="{BLUE}"/>'
         + text(ex - 12, ey - 14, "LIVE", "monob", 10, BLUE, "end", 'class="monob fade" letter-spacing="1.5"')
@@ -254,7 +254,7 @@ def hero():
         f'<g clip-path="url(#card)"><g clip-path="url(#R)">{right}</g><g clip-path="url(#L)">{left}</g>{seam}</g>'
         f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="27" fill="none" stroke="{INK}" stroke-opacity=".12" stroke-width="2"/>'
     )
-    save("hero.svg", svg(W, H, "Darus Ishak. 2014 to 2022: mills, labs and biogas plants. Since 2022: the software those plants run on.", body, css))
+    save("hero.svg", svg(W, H, "Darus Ishak. Before: the plant floor. Now: the software behind it.", body, css))
 
 
 # ------------------------------------------------------------------ section headers
@@ -273,44 +273,6 @@ def header(num, title, note):
         save(f"h-{num}-{mode}.svg", svg(W, H, f"{num} {title}", body, font_css("cas", "monob")))
 
 
-# ------------------------------------------------------------------ work cards
-def work_card(slug, kicker, title, desc, stats, shot, bg, fg, accent, sub):
-    W = 588
-    pad = 22
-    sw = W - pad * 2
-    sh = round(sw * 809 / 1280)
-    y = pad + sh + 44
-    parts = [
-        f'<defs><clipPath id="c"><rect width="{W}" height="9999" rx="26"/></clipPath>'
-        f'<clipPath id="s"><rect x="{pad}" y="{pad}" width="{sw}" height="{sh}" rx="14"/></clipPath></defs>'
-    ]
-    inner = [
-        f'<image href="{img_b64(SRC / shot)}" x="{pad}" y="{pad}" width="{sw}" height="{sh}" clip-path="url(#s)" preserveAspectRatio="xMidYMin slice"/>',
-        f'<rect x="{pad}" y="{pad}" width="{sw}" height="{sh}" rx="14" fill="none" stroke="{fg}" stroke-opacity=".18"/>',
-        text(pad + 4, y, kicker.upper(), "monob", 11.5, accent, extra='letter-spacing="2"'),
-    ]
-    y += 46
-    inner.append(text(pad + 2, y, title, "cas", 40, fg, extra='letter-spacing="-1"'))
-    y += 34
-    for line in wrap(desc, "sans", 17, sw - 8):
-        inner.append(text(pad + 4, y, line, "sans", 17, sub))
-        y += 25
-    y += 32
-    x = pad + 4
-    for big, label in stats:
-        inner.append(text(x, y, big, "cas", 40, fg, extra='letter-spacing="-1"'))
-        inner.append(text(x, y + 22, label.upper(), "monob", 11, sub, extra='letter-spacing="1.8"'))
-        x += max(width(big, "cas", 40) - len(big), width(label.upper(), "monob", 11) + len(label) * 1.8) + 44
-    y += 66
-    inner.append(f'<line x1="{pad + 4}" y1="{y - 26}" x2="{W - pad - 4}" y2="{y - 26}" stroke="{fg}" stroke-opacity=".2"/>')
-    inner.append(text(pad + 4, y, "Read the case study", "monob", 14, fg))
-    inner.append(arrow(W - pad - 22, y - 5, 18, fg))
-    H = y + 26
-    parts.append(f'<g clip-path="url(#c)"><rect width="{W}" height="{H}" fill="{bg}"/>{"".join(inner)}</g>')
-    parts.append(f'<rect x="1" y="1" width="{W - 2}" height="{H - 2}" rx="25" fill="none" stroke="{WHITE}" stroke-opacity=".16" stroke-width="2"/>')
-    save(f"work-{slug}.svg", svg(W, H, f"{title}. {desc}", "".join(parts), font_css("cas", "monob", "sans")))
-
-
 # ------------------------------------------------------------------ Ruji Labs
 def studio_card():
     W, H = 1200, 200
@@ -325,9 +287,9 @@ def studio_card():
         f'<line x1="{48 + lw + 40:.0f}" y1="48" x2="{48 + lw + 40:.0f}" y2="{H - 48}" stroke="{WHITE}" stroke-opacity=".2"/>'
     )
     x = 48 + lw + 80
-    body += text(x, 74, "MY PRODUCT STUDIO · SHAH ALAM", "monob", 12, SUN, extra='letter-spacing="2"')
+    body += text(x, 74, "RUJI LABS", "monob", 12, SUN, extra='letter-spacing="2"')
     y = 112
-    for line in wrap("Software for Malaysian businesses. Every product below runs in production on its own backend, with real payments.", "sans", 20, W - x - 56):
+    for line in wrap("My product studio. Software for Malaysian businesses, live in production.", "sans", 20, W - x - 56):
         body += text(x, y, line, "sans", 20, WHITE)
         y += 30
     save("studio.svg", svg(W, H, "Ruji Labs, my product studio in Shah Alam.", body, font_css("monob", "sans")))
@@ -352,71 +314,13 @@ def tile(slug, name, kind, year, line, domain):
     save(f"p-{slug}.svg", svg(W, H, f"{name}: {line}", "".join(body), font_css("cas", "monob", "mono", "sans")))
 
 
-# ------------------------------------------------------------------ path
-def path_strip():
-    W, H = 1200, 300
-    steps = [
-        ("2014", "Process engineer", "Agricultural processing, Malaysia"),
-        ("2017", "Research assistant", "Anaerobic digestion, Turin"),
-        ("2018", "Project engineer", "Biogas plants, Kuala Lumpur"),
-        ("2019", "Process engineer", "Coating lines, Kuching"),
-        ("2021", "Mill engineer", "Palm oil mill, East Kalimantan"),
-        ("2022", "Senior engineer", "Digitalisation and data, renewable energy"),
-    ]
-    x0, colw = 48, (W - 96) / 6
-    seam = x0 + colw * 5 - 16
-    css = font_css("cas", "monob", "sans") + (
-        ".dot{animation:run 7s cubic-bezier(.65,0,.35,1) infinite}"
-        f"@keyframes run{{0%{{transform:translateX(0);opacity:0}}6%{{opacity:1}}88%{{opacity:1}}100%{{transform:translateX({W - 96 - 20:.0f}px);opacity:0}}}}"
-        "@media (prefers-reduced-motion:reduce){.dot{display:none}}"
-    )
-    body = [
-        f'<defs><clipPath id="c"><rect width="{W}" height="{H}" rx="26"/></clipPath></defs><g clip-path="url(#c)">',
-        f'<rect width="{W}" height="{H}" fill="{WHITE}"/><rect width="{seam}" height="{H}" fill="{BLUE}"/>',
-        f'<line x1="{x0}" y1="96" x2="{W - x0}" y2="96" stroke="{WHITE}" stroke-opacity=".5" stroke-width="2"/>',
-        f'<line x1="{seam}" y1="96" x2="{W - x0}" y2="96" stroke="{INK}" stroke-width="2"/>',
-        text(x0, 52, "THE PLANT FLOOR", "monob", 12, SUN, extra='letter-spacing="2"'),
-        text(W - x0, 52, "THE SOFTWARE", "monob", 12, BLUE, "end", 'letter-spacing="2"'),
-    ]
-    for i, (yr, role, place) in enumerate(steps):
-        x = x0 + colw * i + (16 if i == 5 else 0)
-        on_blue = i < 5
-        fg, sub = (WHITE, "rgba(255,255,255,.75)") if on_blue else (INK, MUTE)
-        body.append(f'<circle cx="{x + 6}" cy="96" r="6" fill="{fg if on_blue else BLUE}"/>')
-        body.append(text(x, 146, yr, "monob", 13, fg, extra='letter-spacing="1"'))
-        y = 178
-        for ln in wrap(role, "cas", 21, colw - 22):
-            body.append(text(x, y, ln, "cas", 21, fg))
-            y += 26
-        y += 4
-        for ln in wrap(place, "sans", 14, colw - 22):
-            body.append(text(x, y, ln, "sans", 14, sub))
-            y += 20
-    body.append(f'<circle class="dot" cx="{x0 + 6}" cy="96" r="4" fill="{SUN}"/>')
-    body.append("</g>")
-    save("path.svg", svg(W, H, "2014 to 2021 on the plant floor in Malaysia, Italy and Indonesia. Since 2022, the software.", "".join(body), css))
-
-
 def main():
     OUT.mkdir(exist_ok=True)
+    for old in OUT.glob("*.svg"):
+        old.unlink()
     load_fonts()
     hero()
-    header("01", "Things I built", "client work · names masked")
-    header("02", "Ruji Labs", "nine products live")
-    header("03", "The path", "2014 to now")
-    header("04", "How I work", "the short version")
-    work_card(
-        "biogas", "Renewable energy · palm oil mills", "Biogas Operations",
-        "Twenty-four plants on one platform. SCADA every 15 minutes, and a monthly report that writes itself.",
-        [("6h to 10m", "monthly report"), ("24", "plants")],
-        "biogas-800.webp", BLUE, WHITE, SUN, "rgba(255,255,255,.82)",
-    )
-    work_card(
-        "solar", "Renewable energy · commercial rooftops", "Solar Operations",
-        "Every site judged each day against the sunlight it actually received, with a satellite twin as a second opinion.",
-        [("138", "sites"), ("38.22 MW", "installed")],
-        "solar-800.webp", INK, WHITE, SUN, "rgba(255,255,255,.74)",
-    )
+    header("01", "Ruji Labs", "what I build")
     studio_card()
     products = [
         ("postlah", "Post-Lah", "Social posting", "2026", "Write it, or let AI write it. Post-Lah schedules it, posts it and answers the comments.", "post-lah.my"),
@@ -425,13 +329,9 @@ def main():
         ("conecta", "Conecta", "Name cards", "2026", "One identity, many name cards. Printed QR codes can be re-pointed without reprinting.", "conecta.my"),
         ("workit", "WorkIt", "Service operations", "2026", "Quotation to job to service report, for contractors and maintenance teams.", "workit.my"),
         ("semakcv", "SemakCV", "Resumes", "2026", "Upload a resume, get rewritten bullet points and an ATS score against the job ad.", "semakcv.com"),
-        ("rsvplah", "RSVP-Lah", "Events", "2025", "One link collects every RSVP and shows who is coming in real time.", "rsvp-lah.my"),
-        ("etempah", "e-Tempah", "School bookings", "2025", "Teachers book labs, halls and AV rooms, with approvals built in.", "e-tempah.com"),
-        ("pl300", "PL-300 Drill", "Exam prep", "2026", "120 flashcards and 187 exam-style questions for the Power BI PL-300 exam.", "powerbi.rujilabs.com"),
     ]
     for p in products:
         tile(*p)
-    path_strip()
 
 
 if __name__ == "__main__":
